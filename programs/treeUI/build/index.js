@@ -17,12 +17,4 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var root = ReactDOM.createRoot(document.getElementById('root'));
-//const element = <p>a</p>;
-/*
-const element = React.createElement(
-  'h1',
-    {className: 'greeting'},
-      'Hello, world!'
-      );
-*/
 root.render(_react2.default.createElement(_App2.default, null));
