@@ -1,10 +1,10 @@
 import React from 'react';
-import TreeNode from './TreeNode';
+import Node from './Node';
 
 class App extends React.Component {
 	render() {
 		return (
-		<TreeNode />
+		<Node />
 		);
 	}
 }

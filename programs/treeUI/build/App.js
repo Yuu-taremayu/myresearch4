@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TreeNode = require('./TreeNode');
+var _Node = require('./Node');
 
-var _TreeNode2 = _interopRequireDefault(_TreeNode);
+var _Node2 = _interopRequireDefault(_Node);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,7 +34,7 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_TreeNode2.default, null);
+			return _react2.default.createElement(_Node2.default, null);
 		}
 	}]);
 

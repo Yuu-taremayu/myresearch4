@@ -11,9 +11,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TreeNode = require('./TreeNode');
+var _Node = require('./Node');
 
-var _TreeNode2 = _interopRequireDefault(_TreeNode);
+var _Node2 = _interopRequireDefault(_Node);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,7 +35,7 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_TreeNode2.default, null);
+			return _react2.default.createElement(_Node2.default, null);
 		}
 	}]);
 
@@ -43,7 +43,7 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
-},{"./TreeNode":2,"react":10}],2:[function(require,module,exports){
+},{"./Node":2,"react":10}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -64,16 +64,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TreeNode = function (_React$Component) {
-	_inherits(TreeNode, _React$Component);
+var Node = function (_React$Component) {
+	_inherits(Node, _React$Component);
 
-	function TreeNode(props) {
-		_classCallCheck(this, TreeNode);
+	function Node(props) {
+		_classCallCheck(this, Node);
 
-		return _possibleConstructorReturn(this, (TreeNode.__proto__ || Object.getPrototypeOf(TreeNode)).call(this, props));
+		return _possibleConstructorReturn(this, (Node.__proto__ || Object.getPrototypeOf(Node)).call(this, props));
 	}
 
-	_createClass(TreeNode, [{
+	_createClass(Node, [{
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -88,10 +88,10 @@ var TreeNode = function (_React$Component) {
 		}
 	}]);
 
-	return TreeNode;
+	return Node;
 }(_react2.default.Component);
 
-exports.default = TreeNode;
+exports.default = Node;
 },{"react":10}],3:[function(require,module,exports){
 'use strict';
 
