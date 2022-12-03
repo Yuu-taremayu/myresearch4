@@ -7,8 +7,13 @@ class Node extends React.Component {
 
 	render() {
 		return (
-		<div>
-			<p>this is node</p>
+		<div className="node">
+			<div className="node-name">
+				<p>name</p>
+			</div>
+			<div className="node-parameter">
+				<p>para</p>
+			</div>
 		</div>
 		);
 	}
