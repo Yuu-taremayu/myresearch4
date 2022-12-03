@@ -1,7 +1,10 @@
+SRCDIR="./src/js/"
+DSTDIR="./build/"
+
 # Transpile
-babel --presets react,es2015 src -d build
+babel --presets react,es2015 ${SRCDIR} -d ${DSTDIR}
 
 # Packaging
-browserify build/index.js -o bundle.js
+browserify ${DSTDIR}index.js -o bundle.js
 
 date; echo;
