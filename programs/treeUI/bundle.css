@@ -1,0 +1,14 @@
+:root {
+	background: blue;
+}
+.node-parameter {
+	display: flex;
+}
+
+.threshold {
+	background: red;
+}
+
+.split-num {
+	background: green;
+}
