@@ -92,9 +92,22 @@ var Node = function (_React$Component) {
 					"div",
 					{ className: "node-parameter" },
 					_react2.default.createElement(
-						"p",
-						null,
-						"para"
+						"div",
+						{ className: "threshold" },
+						_react2.default.createElement(
+							"p",
+							null,
+							"k"
+						)
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "split-num" },
+						_react2.default.createElement(
+							"p",
+							null,
+							"n"
+						)
 					)
 				)
 			);
