@@ -12,7 +12,12 @@ class Node extends React.Component {
 				<p>name</p>
 			</div>
 			<div className="node-parameter">
-				<p>para</p>
+				<div className="threshold">
+					<p>k</p>
+				</div>
+				<div className="split-num">
+					<p>n</p>
+				</div>
 			</div>
 		</div>
 		);
