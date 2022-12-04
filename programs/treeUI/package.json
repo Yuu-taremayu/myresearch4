@@ -16,6 +16,9 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "npm-install-missing": "^0.1.4"
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
+    "npm-install-missing": "^0.1.4",
+    "react-bootstrap": "^2.6.0"
   }
 }
