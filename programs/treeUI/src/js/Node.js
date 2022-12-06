@@ -1,4 +1,6 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 
 class Node extends React.Component {
 	constructor(props) {
@@ -7,19 +9,14 @@ class Node extends React.Component {
 
 	render() {
 		return (
-		<div className="node">
-			<div className="node-name">
-				<p>name</p>
-			</div>
-			<div className="node-parameter">
-				<div className="threshold">
-					<p>k</p>
-				</div>
-				<div className="split-num">
-					<p>n</p>
-				</div>
-			</div>
-		</div>
+		<Card className="text-center">
+			<Card.Header>
+				root
+			</Card.Header>
+			<Card.Body>
+				<Form.Control type="text" placeholder="k"/>
+			</Card.Body>
+		</Card>
 		);
 	}
 }
