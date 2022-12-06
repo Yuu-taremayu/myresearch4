@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -6,9 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Card = require('react-bootstrap/Card');
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _Form = require('react-bootstrap/Form');
+
+var _Form2 = _interopRequireDefault(_Form);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28,41 +36,20 @@ var Node = function (_React$Component) {
 	}
 
 	_createClass(Node, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				"div",
-				{ className: "node" },
+				_Card2.default,
+				{ className: 'text-center' },
 				_react2.default.createElement(
-					"div",
-					{ className: "node-name" },
-					_react2.default.createElement(
-						"p",
-						null,
-						"name"
-					)
+					_Card2.default.Header,
+					null,
+					'root'
 				),
 				_react2.default.createElement(
-					"div",
-					{ className: "node-parameter" },
-					_react2.default.createElement(
-						"div",
-						{ className: "threshold" },
-						_react2.default.createElement(
-							"p",
-							null,
-							"k"
-						)
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "split-num" },
-						_react2.default.createElement(
-							"p",
-							null,
-							"n"
-						)
-					)
+					_Card2.default.Body,
+					null,
+					_react2.default.createElement(_Form2.default.Control, { type: 'text', placeholder: 'k' })
 				)
 			);
 		}
