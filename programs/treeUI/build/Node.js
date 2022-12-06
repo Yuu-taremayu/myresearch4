@@ -39,17 +39,22 @@ var Node = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				_Card2.default,
-				{ className: 'text-center' },
+				'div',
+				{ className: 'node' },
 				_react2.default.createElement(
-					_Card2.default.Header,
-					null,
-					'root'
-				),
-				_react2.default.createElement(
-					_Card2.default.Body,
-					null,
-					_react2.default.createElement(_Form2.default.Control, { type: 'text', placeholder: 'k' })
+					_Card2.default,
+					{ className: 'text-center' },
+					_react2.default.createElement(
+						_Card2.default.Header,
+						null,
+						'root'
+					),
+					_react2.default.createElement(
+						_Card2.default.Body,
+						{ className: 'node-parameter' },
+						_react2.default.createElement(_Form2.default.Control, { className: 'threshold', type: 'text', size: 'sm', placeholder: 'k' }),
+						_react2.default.createElement(_Form2.default.Control, { className: 'split-num', type: 'text', size: 'sm', placeholder: 'n' })
+					)
 				)
 			);
 		}
