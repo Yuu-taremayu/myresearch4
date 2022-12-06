@@ -9,14 +9,17 @@ class Node extends React.Component {
 
 	render() {
 		return (
-		<Card className="text-center">
-			<Card.Header>
-				root
-			</Card.Header>
-			<Card.Body>
-				<Form.Control type="text" placeholder="k"/>
-			</Card.Body>
-		</Card>
+		<div className="node">
+			<Card className="text-center">
+				<Card.Header>
+					root
+				</Card.Header>
+				<Card.Body className="node-parameter">
+					<Form.Control className="threshold" type="text" size="sm" placeholder="k"/>
+					<Form.Control className="split-num" type="text" size="sm" placeholder="n"/>
+				</Card.Body>
+			</Card>
+		</div>
 		);
 	}
 }

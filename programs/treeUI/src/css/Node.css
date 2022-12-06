@@ -1,3 +1,9 @@
+.node {
+	display: flex;
+	margin: auto;
+	width: 10em;
+}
+
 .node-parameter {
 	display: flex;
 }
