@@ -6,7 +6,7 @@ CSSDIR="./src/css/"
 babel --presets react,es2015 ${SRCDIR} -d ${DSTDIR}
 
 # Packaging JS
-browserify ${DSTDIR}index.js -o bundle.js
+browserify -g browserify-css ${DSTDIR}index.js -o bundle.js
 
 #Packaging CSS
 cat ${CSSDIR}* > bundle.css
