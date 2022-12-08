@@ -4,7 +4,9 @@ import Node from './Node';
 class App extends React.Component {
 	render() {
 		return (
-		<Node />
+		<div className="node-width">
+			<Node name=""/>
+		</div>
 		);
 	}
 }

@@ -34,7 +34,11 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_Node2.default, null);
+			return _react2.default.createElement(
+				'div',
+				{ className: 'node-width' },
+				_react2.default.createElement(_Node2.default, { name: '' })
+			);
 		}
 	}]);
 

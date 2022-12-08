@@ -1,20 +1,18 @@
-:root {
-	background: blue;
+#root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.node-width {
+	display: flex;
+	justify-content: center;
 }
 .node {
-	display: flex;
-	margin: auto;
 	width: 10em;
 }
 
 .node-parameter {
 	display: flex;
-}
-
-.threshold {
-	background: red;
-}
-
-.split-num {
-	background: green;
 }

@@ -35,7 +35,11 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_Node2.default, null);
+			return _react2.default.createElement(
+				'div',
+				{ className: 'node-width' },
+				_react2.default.createElement(_Node2.default, { name: '' })
+			);
 		}
 	}]);
 
@@ -78,7 +82,18 @@ var Node = function (_React$Component) {
 	function Node(props) {
 		_classCallCheck(this, Node);
 
-		return _possibleConstructorReturn(this, (Node.__proto__ || Object.getPrototypeOf(Node)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Node.__proto__ || Object.getPrototypeOf(Node)).call(this, props));
+
+		if (props.name === '') {
+			_this.state = {
+				nodeName: 'root'
+			};
+		} else {
+			_this.state = {
+				nodeName: props.name
+			};
+		}
+		return _this;
 	}
 
 	_createClass(Node, [{
@@ -93,7 +108,7 @@ var Node = function (_React$Component) {
 					_react2.default.createElement(
 						_Card2.default.Header,
 						null,
-						'root'
+						this.state.nodeName
 					),
 					_react2.default.createElement(
 						_Card2.default.Body,
