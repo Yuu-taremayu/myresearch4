@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
@@ -7,12 +7,16 @@ class Node extends React.Component {
 		super(props);
 		if (props.name === '') {
 			this.state = {
-				nodeName: 'root'
+				nodeName: 'root',
+				n: 0,
+				k: 0
 			};
 		}
 		else {
 			this.state = {
-				nodeName: props.name
+				nodeName: props.name,
+				n: 0,
+				k: 0
 			};
 		}
 	}
@@ -23,8 +27,20 @@ class Node extends React.Component {
 			<Card className="text-center">
 				<Card.Header>{this.state.nodeName}</Card.Header>
 				<Card.Body className="node-parameter">
-					<Form.Control className="threshold" type="text" size="sm" placeholder="k"/>
-					<Form.Control className="split-num" type="text" size="sm" placeholder="n"/>
+					<Form.Control
+						className="threshold"
+						type="text"
+						size="sm"
+						placeholder="k"
+						onChange={(e) => this.setState({k: e.target.value})}
+					/>
+					<Form.Control
+						className="split-num"
+						type="text"
+						size="sm"
+						placeholder="n"
+						onChange={(e) => this.setState({n: e.target.value})}
+					/>
 				</Card.Body>
 			</Card>
 		</div>
