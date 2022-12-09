@@ -36,11 +36,15 @@ var Node = function (_React$Component) {
 
 		if (props.name === '') {
 			_this.state = {
-				nodeName: 'root'
+				nodeName: 'root',
+				n: 0,
+				k: 0
 			};
 		} else {
 			_this.state = {
-				nodeName: props.name
+				nodeName: props.name,
+				n: 0,
+				k: 0
 			};
 		}
 		return _this;
@@ -49,6 +53,8 @@ var Node = function (_React$Component) {
 	_createClass(Node, [{
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'node' },
@@ -63,8 +69,24 @@ var Node = function (_React$Component) {
 					_react2.default.createElement(
 						_Card2.default.Body,
 						{ className: 'node-parameter' },
-						_react2.default.createElement(_Form2.default.Control, { className: 'threshold', type: 'text', size: 'sm', placeholder: 'k' }),
-						_react2.default.createElement(_Form2.default.Control, { className: 'split-num', type: 'text', size: 'sm', placeholder: 'n' })
+						_react2.default.createElement(_Form2.default.Control, {
+							className: 'threshold',
+							type: 'text',
+							size: 'sm',
+							placeholder: 'k',
+							onChange: function onChange(e) {
+								return _this2.setState({ k: e.target.value });
+							}
+						}),
+						_react2.default.createElement(_Form2.default.Control, {
+							className: 'split-num',
+							type: 'text',
+							size: 'sm',
+							placeholder: 'n',
+							onChange: function onChange(e) {
+								return _this2.setState({ n: e.target.value });
+							}
+						})
 					)
 				)
 			);

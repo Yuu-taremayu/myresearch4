@@ -1,11 +1,11 @@
 import React from 'react';
-import Node from './Node';
+import Tree from './Tree';
 
 class App extends React.Component {
 	render() {
 		return (
 		<div className="node-width">
-			<Node name=""/>
+			<Tree />
 		</div>
 		);
 	}
