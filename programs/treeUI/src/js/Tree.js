@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Node from './Node';
 
 class Tree extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			name: 'root',
+			children: []
+		}
+	}
+
+	addChildren(nodeName, num) {
+		let prefix = "";
+		if (nodeName === "root") {
+			prefix = "children";
+		}
+		else {
+			prefix = nodeName + "-";
+		}
+		let childrenIndex = [...Array(num).keys()];
+		let childrenNode = [...childrenIndex.map((item) => {return { name: prefix + (item + 1).toString(), children: [] }})];
 	}
 
 	render() {
-		const depth = [...Array(3)].map((_, i) => i);
-		console.log(depth);
-		const tree = depth.map((_, item) => <li key={item}><Node name={item} /></li>)
 		return (
 		<div>
-			<Node name="" />
-			<ul>
-				{tree}
-			</ul>
+			<Node name={this.state.name} children={this.state.children} addChildren={this.addChildren} />
 		</div>
 		);
 	}

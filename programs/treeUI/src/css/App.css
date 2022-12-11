@@ -5,6 +5,10 @@
 	height: 100vh;
 }
 
+ul {
+	list-style: none;
+}
+
 .node-width {
 	display: flex;
 	justify-content: center;

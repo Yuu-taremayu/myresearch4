@@ -30,32 +30,36 @@ var Tree = function (_React$Component) {
 	function Tree(props) {
 		_classCallCheck(this, Tree);
 
-		return _possibleConstructorReturn(this, (Tree.__proto__ || Object.getPrototypeOf(Tree)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Tree.__proto__ || Object.getPrototypeOf(Tree)).call(this, props));
+
+		_this.state = {
+			name: 'root',
+			children: []
+		};
+		return _this;
 	}
 
 	_createClass(Tree, [{
+		key: 'addChildren',
+		value: function addChildren(nodeName, num) {
+			var prefix = "";
+			if (nodeName === "root") {
+				prefix = "children";
+			} else {
+				prefix = nodeName + "-";
+			}
+			var childrenIndex = [].concat(_toConsumableArray(Array(num).keys()));
+			var childrenNode = [].concat(_toConsumableArray(childrenIndex.map(function (item) {
+				return { name: prefix + (item + 1).toString(), children: [] };
+			})));
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var depth = [].concat(_toConsumableArray(Array(3))).map(function (_, i) {
-				return i;
-			});
-			console.log(depth);
-			var tree = depth.map(function (_, item) {
-				return _react2.default.createElement(
-					'li',
-					{ key: item },
-					_react2.default.createElement(_Node2.default, { name: item })
-				);
-			});
 			return _react2.default.createElement(
 				'div',
 				null,
-				_react2.default.createElement(_Node2.default, { name: '' }),
-				_react2.default.createElement(
-					'ul',
-					null,
-					tree
-				)
+				_react2.default.createElement(_Node2.default, { name: this.state.name, children: this.state.children, addChildren: this.addChildren })
 			);
 		}
 	}]);

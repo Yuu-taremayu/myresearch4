@@ -34,19 +34,11 @@ var Node = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (Node.__proto__ || Object.getPrototypeOf(Node)).call(this, props));
 
-		if (props.name === '') {
-			_this.state = {
-				nodeName: 'root',
-				n: 0,
-				k: 0
-			};
-		} else {
-			_this.state = {
-				nodeName: props.name,
-				n: 0,
-				k: 0
-			};
-		}
+		_this.state = {
+			nodeName: props.name,
+			n: 0,
+			k: 0
+		};
 		return _this;
 	}
 
@@ -55,6 +47,8 @@ var Node = function (_React$Component) {
 		value: function render() {
 			var _this2 = this;
 
+			//this.props.addChildren(this.state.nodeName, 3);
+			this.props.addChildren("children1", 3);
 			return _react2.default.createElement(
 				'div',
 				{ className: 'node' },

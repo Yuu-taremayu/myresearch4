@@ -5,23 +5,16 @@ import Form from 'react-bootstrap/Form';
 class Node extends React.Component {
 	constructor(props) {
 		super(props);
-		if (props.name === '') {
-			this.state = {
-				nodeName: 'root',
-				n: 0,
-				k: 0
-			};
-		}
-		else {
-			this.state = {
-				nodeName: props.name,
-				n: 0,
-				k: 0
-			};
-		}
+		this.state = {
+			nodeName: props.name,
+			n: 0,
+			k: 0
+		};
 	}
 
 	render() {
+		//this.props.addChildren(this.state.nodeName, 3);
+		this.props.addChildren("children1", 3);
 		return (
 		<div className="node">
 			<Card className="text-center">
