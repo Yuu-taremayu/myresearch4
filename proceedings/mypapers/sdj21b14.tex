@@ -1,0 +1,79 @@
+%% Created by Yasuyuki SAITO, Department of Information Engineering.
+
+
+%% 2016/01/13 Edit by Kouta ASAI, and Akira NEMOTO, Advanced Control and Information Engineering Course
+%% 2017/12/07 Edit by by Shinichi OEDA, Department of Information Engineering.
+%% 「★」マークが変更を加えた部分を表す
+
+%% ★jsarticleに変更 fleqnで数式を左寄せにする
+\documentclass[twocolumn, fleqn, uplatex]{jsarticle}
+
+\usepackage{proceeding-DJ}
+\usepackage{afterpage}
+%% ★数式を使う人が多いと思うので
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{subcaption}
+
+
+%% ★ヒラギノを使っている人向け
+\usepackage[deluxe, expert]{otf}
+
+% \makeatletter
+% \long\def\@makecaption#1#2{%
+%   \vskip\abovecaptionskip
+%   \iftdir\sbox\@tempboxa{#1\hskip1zw#2}%
+%     \else\sbox\@tempboxa{#1~ #2}%
+%   \fi
+%   \ifdim \wd\@tempboxa >\hsize
+%     \iftdir #1\hskip1zw#2\relax\par
+%     \else #1~ #2\relax\par\fi
+%   \else
+%   \global \@minipagefalse
+%   \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+% \fi
+% \vskip\belowcaptionskip}
+% \makeatother
+
+\begin{document}
+
+\pagestyle{empty}
+
+%% 番号をつけるときはこのすぐ下の行を有効にして，番号を編集する．
+%%\date{J--33}
+%%所属をDJ以外にしたい場合は，styファイルを編集する．
+\date{}
+\titleJ{秘密分散法におけるユーザフレンドリーなUIの提案・評価・考察}
+\titleE{}
+\authorJ{三浦 夢生}
+\authorE{Yu Miura}
+\abstract{The purpose of this study is ... \\
+%
+\hspace*{1zw} If you would like to start a new paragraph, you should use
+``\texttt{\textbackslash hspace*\{1zw\}}''.}
+% \keywords{The key word1 of the test for \LaTeXe \ template file, The key
+% word2 of the test for \LaTeXe \ template file, The key word3 of the test
+% for \LaTeXe \ template file}
+\keywords{Secret Sharing, cryptgraphy, Shamir's Secret Sharing, User Interface}
+\maketitle
+
+%% 現在ページの上部へのフロートの配置を抑制．
+%% ここに記述しておくことで，最初のページの左段上部に図表を置かない．
+\suppressfloats[t]
+
+\section{まえがき}
+\section{前提知識}
+\subsection{Shamirの秘密分散法}
+\subsection{拡大体}
+\section{実装}
+\section{評価方法}
+\section{結果・考察}
+\section{まとめ}
+\section{今後の展望}
+
+\begin{thebibliography}{9}
+\end{thebibliography}
+
+\end{document}
