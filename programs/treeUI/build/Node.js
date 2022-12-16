@@ -70,7 +70,9 @@ var Node = function Node(props) {
 					{ className: 'btn-confirm' },
 					_react2.default.createElement(
 						_Button2.default,
-						{ variant: 'outline-primary', size: 'sm' },
+						{ variant: 'outline-primary', size: 'sm', onClick: function onClick() {
+								return dispatch((0, _treeSlice.setChildren)());
+							} },
 						'Confirm'
 					)
 				)

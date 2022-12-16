@@ -21,12 +21,6 @@ export const treeSlice = createSlice({
 			state.n = action.payload;
 		},
 		setChildren: (state, action) => {
-			if (state.nodeName === 'root') {
-				console.log('hello');
-			}
-			else {
-				console.log('ya');
-			}
 		},
 	},
 });
