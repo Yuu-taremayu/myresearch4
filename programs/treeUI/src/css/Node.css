@@ -1,7 +1,12 @@
 .node {
-	width: 10em;
+	width: 15em;
 }
 
 .node-parameter {
 	display: flex;
+}
+
+.btn-confirm {
+	display: flex;
+	justify-content: flex-end;
 }

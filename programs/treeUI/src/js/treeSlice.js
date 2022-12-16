@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+export const initialState = {
 	nodeName: 'root',
 	k: 0,
 	n: 0,
@@ -11,6 +11,15 @@ export const treeSlice = createSlice({
 	name: 'tree',
 	initialState,
 	reducers: {
+		setNodeName: (state, action) => {
+			state.nodeName = action.payload;
+		},
+		setParameterK: (state, action) => {
+			state.k = action.payload;
+		},
+		setParameterN: (state, action) => {
+			state.n = action.payload;
+		},
 		setChildren: (state, action) => {
 			if (state.nodeName === 'root') {
 				console.log('hello');
@@ -22,5 +31,5 @@ export const treeSlice = createSlice({
 	},
 });
 
-export const { setChildren } = treeSlice.actions;
+export const { setNodeName, setParameterK, setParameterN, setChildren } = treeSlice.actions;
 export default treeSlice.reducer;
