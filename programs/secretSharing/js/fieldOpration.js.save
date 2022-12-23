@@ -4,7 +4,7 @@ const BITMASK = 0xff;
 /*
  * set index and GFVector of elements on GF
  */
-export function setGFInfo(GFVector) {
+function setGFInfo(GFVector) {
 	const genePoly = [1, 0, 1, 1, 1, 0, 0, 0, 1];
 	var mem = [0, 0, 0, 0, 0, 0, 0, 0]
 	var input = 0;
@@ -99,7 +99,7 @@ function lagrange(dataNum, dataX, dataY, GFVector) {
  * addtion on GF(extension field)
  * xor and bit mask
  */
-export function fieldAdd(x, y) {
+ function fieldAdd(x, y) {
 	 return (x ^ y) & BITMASK;
  }
 
