@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
@@ -7,10 +7,11 @@ import { setParameterK, setParameterN, setChildren } from './treeSlice';
 
 const Node = (props) => {
 	const dispatch = useDispatch();
+	const nodeName = useSelector(state => state.tree.nodeName);
 	return (
 		<div className="node">
 			<Card className="text-center">
-				<Card.Header>nodeName</Card.Header>
+				<Card.Header>{nodeName}</Card.Header>
 				<Card.Body>
 					<div className="node-parameter">
 						<Form.Control
@@ -27,7 +28,12 @@ const Node = (props) => {
 						/>
 					</div>
 					<div className="btn-confirm">
-						<Button variant="outline-primary" size="sm" onClick={() => dispatch(setChildren())}>Confirm</Button>
+						<Button
+							variant="outline-primary"
+							size="sm"
+							onClick={() => dispatch(setChildren())}>
+							Confirm
+						</Button>
 					</div>
 				</Card.Body>
 			</Card>

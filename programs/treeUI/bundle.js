@@ -55,9 +55,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Node = function Node(props) {
 	var dispatch = (0, _reactRedux.useDispatch)();
-	//dispatch(setNodeName(props.nodeName));
-	//const nodeName = useSelector(state => state.nodeName);
-	//console.log(nodeName);
+	var nodeName = (0, _reactRedux.useSelector)(function (state) {
+		return state.tree.nodeName;
+	});
 	return _react2.default.createElement(
 		'div',
 		{ className: 'node' },
@@ -67,7 +67,7 @@ var Node = function Node(props) {
 			_react2.default.createElement(
 				_Card2.default.Header,
 				null,
-				'nodeName'
+				nodeName
 			),
 			_react2.default.createElement(
 				_Card2.default.Body,
@@ -97,7 +97,10 @@ var Node = function Node(props) {
 					{ className: 'btn-confirm' },
 					_react2.default.createElement(
 						_Button2.default,
-						{ variant: 'outline-primary', size: 'sm', onClick: function onClick() {
+						{
+							variant: 'outline-primary',
+							size: 'sm',
+							onClick: function onClick() {
 								return dispatch((0, _treeSlice.setChildren)());
 							} },
 						'Confirm'
@@ -133,14 +136,28 @@ var _store = require('./store');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tree = function Tree(props) {
-	//const dispatch = useDispatch();
-	//store.dispatch(setNodeName("root"));
-	//const name = useSelector((state) => state.nodeName);
-	//console.log(name);
+	console.log(_store.store.getState());
+	var a;
+	if ((0, _reactRedux.useSelector)(function (state) {
+		return state.tree.children;
+	}).length === 0) {
+		a = _react2.default.createElement(
+			'p',
+			null,
+			'bbb'
+		);
+	} else {
+		var a = _react2.default.createElement(
+			'p',
+			null,
+			'aaa'
+		);
+	}
 	return _react2.default.createElement(
 		'div',
 		{ className: 'tree' },
-		_react2.default.createElement(_Node2.default, { nodeName: 'root' })
+		_react2.default.createElement(_Node2.default, null),
+		a
 	);
 };
 
@@ -232,10 +249,15 @@ var treeSlice = exports.treeSlice = (0, _toolkit.createSlice)({
 			state.n = action.payload;
 		},
 		setChildren: function setChildren(state, action) {
-			if (state.nodeName === 'root') {
-				console.log('hello');
-			} else {
-				console.log('ya');
+			console.log(state.n);
+			for (var i = 0; i < state.n; i++) {
+				console.log("aa");
+				state.children.push({
+					nodeName: 'children',
+					k: 0,
+					n: 0,
+					children: []
+				});
 			}
 		}
 	}

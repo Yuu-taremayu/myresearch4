@@ -28,10 +28,15 @@ var treeSlice = exports.treeSlice = (0, _toolkit.createSlice)({
 			state.n = action.payload;
 		},
 		setChildren: function setChildren(state, action) {
-			if (state.nodeName === 'root') {
-				console.log('hello');
-			} else {
-				console.log('ya');
+			console.log(state.n);
+			for (var i = 0; i < state.n; i++) {
+				console.log("aa");
+				state.children.push({
+					nodeName: 'children',
+					k: 0,
+					n: 0,
+					children: []
+				});
 			}
 		}
 	}

@@ -5,13 +5,18 @@ import { setNodeName } from './treeSlice';
 import { store } from './store';
 
 const Tree = (props) => {
-	//const dispatch = useDispatch();
-	//store.dispatch(setNodeName("root"));
-	//const name = useSelector((state) => state.nodeName);
-	//console.log(name);
+	console.log(store.getState());
+	var a;
+	if (useSelector(state => state.tree.children).length === 0) {
+		a = <p>bbb</p>;
+	}
+	else {
+	var a = <p>aaa</p>;
+	}
 	return (
 		<div className="tree">
-			<Node nodeName={'root'}/>
+			<Node />
+			{a}
 		</div>
 	);
 }

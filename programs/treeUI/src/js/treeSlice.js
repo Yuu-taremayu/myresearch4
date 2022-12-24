@@ -21,6 +21,16 @@ export const treeSlice = createSlice({
 			state.n = action.payload;
 		},
 		setChildren: (state, action) => {
+			console.log(state.n);
+			for (let i = 0; i < state.n; i++) {
+				console.log("aa");
+				state.children.push({
+					nodeName: 'children',
+					k: 0,
+					n: 0,
+					children: []
+					});
+			}
 		},
 	},
 });

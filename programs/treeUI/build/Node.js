@@ -28,9 +28,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Node = function Node(props) {
 	var dispatch = (0, _reactRedux.useDispatch)();
-	//dispatch(setNodeName(props.nodeName));
-	//const nodeName = useSelector(state => state.nodeName);
-	//console.log(nodeName);
+	var nodeName = (0, _reactRedux.useSelector)(function (state) {
+		return state.tree.nodeName;
+	});
 	return _react2.default.createElement(
 		'div',
 		{ className: 'node' },
@@ -40,7 +40,7 @@ var Node = function Node(props) {
 			_react2.default.createElement(
 				_Card2.default.Header,
 				null,
-				'nodeName'
+				nodeName
 			),
 			_react2.default.createElement(
 				_Card2.default.Body,
@@ -70,7 +70,10 @@ var Node = function Node(props) {
 					{ className: 'btn-confirm' },
 					_react2.default.createElement(
 						_Button2.default,
-						{ variant: 'outline-primary', size: 'sm', onClick: function onClick() {
+						{
+							variant: 'outline-primary',
+							size: 'sm',
+							onClick: function onClick() {
 								return dispatch((0, _treeSlice.setChildren)());
 							} },
 						'Confirm'
