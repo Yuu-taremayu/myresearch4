@@ -7,9 +7,6 @@ import { setParameterK, setParameterN, setChildren } from './treeSlice';
 
 const Node = (props) => {
 	const dispatch = useDispatch();
-	//dispatch(setNodeName(props.nodeName));
-	//const nodeName = useSelector(state => state.nodeName);
-	//console.log(nodeName);
 	return (
 		<div className="node">
 			<Card className="text-center">
