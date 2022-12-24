@@ -3,13 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { setParameterK, setParameterN } from './treeSlice';
+import { setParameterK, setParameterN, setChildren } from './treeSlice';
 
 const Node = (props) => {
 	const dispatch = useDispatch();
-	//dispatch(setNodeName(props.nodeName));
-	//const nodeName = useSelector(state => state.nodeName);
-	//console.log(nodeName);
 	return (
 		<div className="node">
 			<Card className="text-center">
@@ -30,7 +27,7 @@ const Node = (props) => {
 						/>
 					</div>
 					<div className="btn-confirm">
-						<Button variant="outline-primary" size="sm">Confirm</Button>
+						<Button variant="outline-primary" size="sm" onClick={() => dispatch(setChildren())}>Confirm</Button>
 					</div>
 				</Card.Body>
 			</Card>
