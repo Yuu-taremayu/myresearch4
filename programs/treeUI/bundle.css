@@ -1,14 +1,27 @@
-:root {
-	background: blue;
+#root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 }
+
+ul {
+	list-style: none;
+}
+
+.node-width {
+	display: flex;
+	justify-content: center;
+}
+.node {
+	width: 15em;
+}
+
 .node-parameter {
 	display: flex;
 }
 
-.threshold {
-	background: red;
-}
-
-.split-num {
-	background: green;
+.btn-confirm {
+	display: flex;
+	justify-content: flex-end;
 }

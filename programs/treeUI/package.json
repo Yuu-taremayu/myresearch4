@@ -17,9 +17,12 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
+    "@reduxjs/toolkit": "^1.9.1",
     "bootstrap": "^5.2.3",
     "browserify-css": "^0.15.0",
     "npm-install-missing": "^0.1.4",
-    "react-bootstrap": "^2.6.0"
+    "react-bootstrap": "^2.6.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0"
   }
 }

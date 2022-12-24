@@ -1,12 +1,12 @@
 import React from 'react';
-import Node from './Node';
+import Tree from './Tree';
 
-class App extends React.Component {
-	render() {
-		return (
-		<Node />
-		);
-	}
+const App = (props) => {
+	return (
+		<div className="App">
+			<Tree />
+		</div>
+	);
 }
 
 export default App;
