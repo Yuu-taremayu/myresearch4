@@ -9,7 +9,14 @@ ul {
 	list-style: none;
 }
 
-.node-width {
+.tree-depth {
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.tree-width {
+	display: flex;
+	flex-direction: row;
 	justify-content: center;
 }

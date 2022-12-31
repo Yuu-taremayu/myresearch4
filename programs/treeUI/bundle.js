@@ -9,6 +9,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = require('react-redux');
+
 var _Tree = require('./Tree');
 
 var _Tree2 = _interopRequireDefault(_Tree);
@@ -16,15 +18,18 @@ var _Tree2 = _interopRequireDefault(_Tree);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App(props) {
+	var tree = (0, _reactRedux.useSelector)(function (state) {
+		return state.tree;
+	});
 	return _react2.default.createElement(
 		'div',
 		{ className: 'App' },
-		_react2.default.createElement(_Tree2.default, null)
+		_react2.default.createElement(_Tree2.default, { node: tree })
 	);
 };
 
 exports.default = App;
-},{"./Tree":3,"react":100}],2:[function(require,module,exports){
+},{"./Tree":3,"react":100,"react-redux":81}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55,9 +60,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Node = function Node(props) {
 	var dispatch = (0, _reactRedux.useDispatch)();
-	var nodeName = (0, _reactRedux.useSelector)(function (state) {
-		return state.tree.nodeName;
-	});
+	var nodeName = props.node.nodeName;
 	return _react2.default.createElement(
 		'div',
 		{ className: 'node' },
@@ -80,7 +83,7 @@ var Node = function Node(props) {
 						type: 'text',
 						placeholder: 'k',
 						onChange: function onChange(e) {
-							return dispatch((0, _treeSlice.setParameterK)(e.target.value));
+							return dispatch((0, _treeSlice.setParameterK)({ nodeName: nodeName, k: e.target.value }));
 						}
 					}),
 					_react2.default.createElement(_Form2.default.Control, {
@@ -88,7 +91,7 @@ var Node = function Node(props) {
 						type: 'text',
 						placeholder: 'n',
 						onChange: function onChange(e) {
-							return dispatch((0, _treeSlice.setParameterN)(e.target.value));
+							return dispatch((0, _treeSlice.setParameterN)({ nodeName: nodeName, n: e.target.value }));
 						}
 					})
 				),
@@ -101,7 +104,7 @@ var Node = function Node(props) {
 							variant: 'outline-primary',
 							size: 'sm',
 							onClick: function onClick() {
-								return dispatch((0, _treeSlice.setChildren)());
+								return dispatch((0, _treeSlice.setChildren)({ nodeName: nodeName }));
 							} },
 						'Confirm'
 					)
@@ -129,40 +132,53 @@ var _Node = require('./Node');
 
 var _Node2 = _interopRequireDefault(_Node);
 
-var _treeSlice = require('./treeSlice');
-
 var _store = require('./store');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tree = function Tree(props) {
-	console.log(_store.store.getState());
-	var a;
-	if ((0, _reactRedux.useSelector)(function (state) {
-		return state.tree.children;
-	}).length === 0) {
-		a = _react2.default.createElement(
-			'p',
-			null,
-			'bbb'
-		);
-	} else {
-		var a = _react2.default.createElement(
-			'p',
-			null,
-			'aaa'
-		);
-	}
+	var node;
+	Array.isArray(props.node) ? node = props.node : node = [props.node];
+	//console.log(node);
+	/*
+ return (
+ 	<div className="tree-depth">
+ 		{node.length != 0 ?
+ 		(
+ 			node.map(item =>
+ 			<Node key={item.nodeName} node={item} />
+ 			)
+ 		) : (
+ 			null
+ 		)}
+ 		{Array.isArray(node) ? 
+ 		(
+ 			<div className="tree-width">
+ 				<Tree node={node.children} />
+ 			</div>
+ 		) : (
+ 			null
+ 		)}
+ 	</div>
+ );*/
 	return _react2.default.createElement(
 		'div',
-		{ className: 'tree' },
-		_react2.default.createElement(_Node2.default, null),
-		a
+		{ className: 'tree-depth' },
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree-width' },
+			node.map(function (item) {
+				return _react2.default.createElement(_Node2.default, { key: item.nodeName, node: item });
+			})
+		),
+		node.map(function (item) {
+			return item.children.length != 0 ? _react2.default.createElement(Tree, { node: item.children }) : null;
+		})
 	);
 };
 
 exports.default = Tree;
-},{"./Node":2,"./store":5,"./treeSlice":6,"react":100,"react-redux":81}],4:[function(require,module,exports){
+},{"./Node":2,"./store":5,"react":100,"react-redux":81}],4:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -243,17 +259,64 @@ var treeSlice = exports.treeSlice = (0, _toolkit.createSlice)({
 			state.nodeName = action.payload;
 		},
 		setParameterK: function setParameterK(state, action) {
-			state.k = action.payload;
+			var path = [];
+			if (action.payload.nodeName === "root") {
+				state.k = action.payload.k;
+			} else {
+				path = action.payload.nodeName.split("-");
+				path.shift();
+				var node = state;
+				for (var i = 0; i < path.length; i++) {
+					node = node.children[path[i]];
+				}
+				node.k = action.payload.k;
+			}
+			var stack = [];
+			stack.push(state);
+			var flag = 0;
+			while (stack.length) {
+				console.log("---");
+				for (var j in stack[0]) {
+					if (stack[0][j].constructor === Object && !stack[0][j].length) {
+						stack.push(stack[0][j]);
+					} else if (Array.isArray(stack[0][j])) {
+						for (var _i = 0; _i < stack[0][j].length; _i++) {
+							stack.push(stack[0][j][_i]);
+						}
+					} else {
+						if (stack[0][j] === action.payload.nodeName) {
+							flag = 1;
+						}
+						if (flag === 1 && j === "k") {
+							console.log('!!!' + j + ' : ' + stack[0][j]);
+						} else {
+							console.log(j + ' : ' + stack[0][j]);
+						}
+					}
+				}
+				flag = 0;
+				stack.shift();
+			}
 		},
 		setParameterN: function setParameterN(state, action) {
-			state.n = action.payload;
+			var path = [];
+			if (action.payload.nodeName === "root") {
+				state.n = action.payload.n;
+			} else {
+				path = action.payload.nodeName.split("-");
+				path.shift();
+				var node = state;
+				for (var i = 0; i < path.length; i++) {
+					node = node.children[path[i]];
+				}
+				node.n = action.payload.n;
+			}
 		},
 		setChildren: function setChildren(state, action) {
-			console.log(state.n);
+			state.children = [];
 			for (var i = 0; i < state.n; i++) {
-				console.log("aa");
 				state.children.push({
-					nodeName: 'children',
+					nodeName: 'children-' + i,
 					k: 0,
 					n: 0,
 					children: []
