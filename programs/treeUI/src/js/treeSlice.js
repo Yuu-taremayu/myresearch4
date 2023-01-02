@@ -15,19 +15,20 @@ export const treeSlice = createSlice({
 			state.nodeName = action.payload;
 		},
 		setParameterK: (state, action) => {
-			let path = [];
 			if (action.payload.nodeName === "root") {
 				state.k = action.payload.k;
 			}
 			else {
-				path = action.payload.nodeName.split("-");
-				path.shift();
-				let node = state;
-				for (let i = 0; i < path.length; i++) {
-					node = node.children[path[i]];
+				let index = action.payload.nodeName.split("-");
+				index.shift();
+				let path = "";
+				for (let i = 0; i < index.length; i++) {
+					path += ".children[" + index[i] + "]"
 				}
-				node.k = action.payload.k;
+				path = "state" + path + ".k";
+				eval(path + "= action.payload.k;");
 			}
+			/*
 			let stack = [];
 			stack.push(state);
 			let flag = 0;
@@ -58,6 +59,7 @@ export const treeSlice = createSlice({
 				flag = 0;
 				stack.shift();
 			}
+			*/
 		},
 		setParameterN: (state, action) => {
 			let path = [];
@@ -65,24 +67,42 @@ export const treeSlice = createSlice({
 				state.n = action.payload.n;
 			}
 			else {
-				path = action.payload.nodeName.split("-");
-				path.shift();
-				let node = state;
-				for (let i = 0; i < path.length; i++) {
-					node = node.children[path[i]];
+				let index = action.payload.nodeName.split("-");
+				index.shift();
+				let path = "";
+				for (let i = 0; i < index.length; i++) {
+					path += ".children[" + index[i] + "]"
 				}
-				node.n = action.payload.n;
+				path = "state" + path + ".n";
+				eval(path + "= action.payload.n;");
 			}
 		},
 		setChildren: (state, action) => {
-			state.children = [];
-			for (let i = 0; i < state.n; i++) {
-				state.children.push({
-					nodeName: 'children-' + i,
-					k: 0,
-					n: 0,
-					children: []
-					});
+			if (action.payload.nodeName === "root") {
+				state.children = [];
+				for (let i = 0; i < state.n; i++) {
+					state.children.push({
+						nodeName: 'children-' + i,
+						k: 0,
+						n: 0,
+						children: []
+						});
+				}
+			}
+			else {
+				let index = action.payload.nodeName.split("-");
+				index.shift();
+				let path = "";
+				for (let i = 0; i < index.length; i++) {
+					path += ".children[" + index[i] + "]"
+				}
+				path = "state" + path;
+				let n = 0;
+				eval('n = ' + path + '.n;');
+				eval(path + ".children = [];");
+				for (let i = 0; i < n; i++) {
+					eval(path + ".children.push({nodeName: '" + action.payload.nodeName.toString() + "-" + i + "', k: 0, n: 0, children: []});");
+				}
 			}
 		},
 	},
