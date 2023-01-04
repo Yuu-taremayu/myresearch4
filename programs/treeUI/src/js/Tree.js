@@ -24,19 +24,8 @@ const Tree = (props) => {
 		}
 		stack.shift();
 	}
-	/*
-		<div className="tree-depth">
-			{node.map(item => <Node key={item.nodeName} node={item} />)}
-			<div className="tree-width">
-			{node.map(item => item.children.length != 0 ?
-				<Tree node={item.children} />
-				:null)}
-			</div>
-		</div>
-	*/
 	return (
 	<div>
-		{console.log(node.children)}
 		<div className="tree-width"><Node key={node.nodeName} node={node} /></div>
 			<div className="tree-depth">
 				{node.children.map((item) => <Tree node={item} />)}
