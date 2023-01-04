@@ -1,21 +1,18 @@
 #root {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-ul {
+	background-color: gray;
 }
 
 .tree-width {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	margin: 6px;
+	background-color: gray;
 }
 
 .tree-depth {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	background-color: silver;
 }
