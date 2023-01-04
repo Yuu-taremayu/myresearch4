@@ -4,7 +4,12 @@ import Node from './Node';
 import { store } from './store';
 
 const Tree = (props) => {
+	const color = 255 - props.depth * 16;
 	const node = props.node;
+	const styles = {
+		background: `rgb(${color}, ${color}, ${color})`
+	};
+	/*
 	let stack = [];
 	stack.push(node);
 	while(stack.length) {
@@ -24,11 +29,12 @@ const Tree = (props) => {
 		}
 		stack.shift();
 	}
+	*/
 	return (
-	<div>
-		<div className="tree-width"><Node key={node.nodeName} node={node} /></div>
-			<div className="tree-depth">
-				{node.children.map((item) => <Tree node={item} />)}
+	<div style={styles}>
+		<div className="tree-width" style={styles}><Node key={node.nodeName} node={node} /></div>
+			<div className="tree-depth" style={styles}>
+				{node.children.map((item) => <Tree node={item} depth={props.depth + 1} />)}
 			</div>
 	</div>
 	);

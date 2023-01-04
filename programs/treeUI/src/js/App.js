@@ -6,7 +6,7 @@ const App = (props) => {
 	const tree = useSelector(state => state.tree);
 	return (
 		<div className="App">
-			<Tree node={tree}/>
+			<Tree node={tree} depth={0}/>
 		</div>
 	);
 }
