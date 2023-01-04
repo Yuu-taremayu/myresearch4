@@ -137,43 +137,49 @@ var _store = require('./store');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tree = function Tree(props) {
-	var node;
-	Array.isArray(props.node) ? node = props.node : node = [props.node];
-	//console.log(node);
+	var node = props.node;
+	var stack = [];
+	stack.push(node);
+	while (stack.length) {
+		for (var j in stack[0]) {
+			if (stack[0][j].constructor === Object && !stack[0][j].length) {
+				stack.push(stack[0][j]);
+			} else if (Array.isArray(stack[0][j])) {
+				for (var i = 0; i < stack[0][j].length; i++) {
+					stack.push(stack[0][j][i]);
+				}
+			} else {
+				console.log(j + ' : ' + stack[0][j]);
+			}
+		}
+		stack.shift();
+	}
 	/*
- return (
  	<div className="tree-depth">
- 		{node.length != 0 ?
- 		(
- 			node.map(item =>
- 			<Node key={item.nodeName} node={item} />
- 			)
- 		) : (
- 			null
- 		)}
- 		{Array.isArray(node) ? 
- 		(
- 			<div className="tree-width">
- 				<Tree node={node.children} />
- 			</div>
- 		) : (
- 			null
- 		)}
+ 		{node.map(item => <Node key={item.nodeName} node={item} />)}
+ 		<div className="tree-width">
+ 		{node.map(item => item.children.length != 0 ?
+ 			<Tree node={item.children} />
+ 			:null)}
+ 		</div>
  	</div>
- );*/
+ */
 	return _react2.default.createElement(
 		'div',
-		{ className: 'tree-depth' },
+		null,
+		console.log(node.children),
 		_react2.default.createElement(
 			'div',
 			{ className: 'tree-width' },
-			node.map(function (item) {
-				return _react2.default.createElement(_Node2.default, { key: item.nodeName, node: item });
-			})
+			_react2.default.createElement(_Node2.default, { key: node.nodeName, node: node })
 		),
-		node.map(function (item) {
-			return item.children.length != 0 ? _react2.default.createElement(Tree, { node: item.children }) : null;
-		})
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree-depth' },
+			node.children.map(function (item) {
+				return _react2.default.createElement(Tree, { node: item });
+			})
+		)
 	);
 };
 

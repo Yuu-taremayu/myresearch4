@@ -2,20 +2,19 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 10vh;
 }
 
 ul {
-	list-style: none;
-}
-
-.tree-depth {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 }
 
 .tree-width {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.tree-depth {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
