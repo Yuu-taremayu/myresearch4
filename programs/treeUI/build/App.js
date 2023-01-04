@@ -23,7 +23,7 @@ var App = function App(props) {
 	return _react2.default.createElement(
 		'div',
 		{ className: 'App' },
-		_react2.default.createElement(_Tree2.default, { node: tree })
+		_react2.default.createElement(_Tree2.default, { node: tree, depth: 0 })
 	);
 };
 
