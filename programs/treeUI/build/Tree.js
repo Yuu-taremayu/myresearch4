@@ -14,21 +14,54 @@ var _Node = require('./Node');
 
 var _Node2 = _interopRequireDefault(_Node);
 
-var _treeSlice = require('./treeSlice');
-
 var _store = require('./store');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tree = function Tree(props) {
-	//const dispatch = useDispatch();
-	//store.dispatch(setNodeName("root"));
-	//const name = useSelector((state) => state.nodeName);
-	//console.log(name);
+	var node = props.node;
+	var stack = [];
+	stack.push(node);
+	while (stack.length) {
+		for (var j in stack[0]) {
+			if (stack[0][j].constructor === Object && !stack[0][j].length) {
+				stack.push(stack[0][j]);
+			} else if (Array.isArray(stack[0][j])) {
+				for (var i = 0; i < stack[0][j].length; i++) {
+					stack.push(stack[0][j][i]);
+				}
+			} else {
+				console.log(j + ' : ' + stack[0][j]);
+			}
+		}
+		stack.shift();
+	}
+	/*
+ 	<div className="tree-depth">
+ 		{node.map(item => <Node key={item.nodeName} node={item} />)}
+ 		<div className="tree-width">
+ 		{node.map(item => item.children.length != 0 ?
+ 			<Tree node={item.children} />
+ 			:null)}
+ 		</div>
+ 	</div>
+ */
 	return _react2.default.createElement(
 		'div',
-		{ className: 'tree' },
-		_react2.default.createElement(_Node2.default, { nodeName: 'root' })
+		null,
+		console.log(node.children),
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree-width' },
+			_react2.default.createElement(_Node2.default, { key: node.nodeName, node: node })
+		),
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree-depth' },
+			node.children.map(function (item) {
+				return _react2.default.createElement(Tree, { node: item });
+			})
+		)
 	);
 };
 

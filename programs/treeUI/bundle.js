@@ -9,6 +9,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = require('react-redux');
+
 var _Tree = require('./Tree');
 
 var _Tree2 = _interopRequireDefault(_Tree);
@@ -16,15 +18,18 @@ var _Tree2 = _interopRequireDefault(_Tree);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App(props) {
+	var tree = (0, _reactRedux.useSelector)(function (state) {
+		return state.tree;
+	});
 	return _react2.default.createElement(
 		'div',
 		{ className: 'App' },
-		_react2.default.createElement(_Tree2.default, null)
+		_react2.default.createElement(_Tree2.default, { node: tree })
 	);
 };
 
 exports.default = App;
-},{"./Tree":3,"react":100}],2:[function(require,module,exports){
+},{"./Tree":3,"react":100,"react-redux":81}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55,9 +60,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Node = function Node(props) {
 	var dispatch = (0, _reactRedux.useDispatch)();
-	//dispatch(setNodeName(props.nodeName));
-	//const nodeName = useSelector(state => state.nodeName);
-	//console.log(nodeName);
+	var nodeName = props.node.nodeName;
 	return _react2.default.createElement(
 		'div',
 		{ className: 'node' },
@@ -67,7 +70,7 @@ var Node = function Node(props) {
 			_react2.default.createElement(
 				_Card2.default.Header,
 				null,
-				'nodeName'
+				nodeName
 			),
 			_react2.default.createElement(
 				_Card2.default.Body,
@@ -80,7 +83,7 @@ var Node = function Node(props) {
 						type: 'text',
 						placeholder: 'k',
 						onChange: function onChange(e) {
-							return dispatch((0, _treeSlice.setParameterK)(e.target.value));
+							return dispatch((0, _treeSlice.setParameterK)({ nodeName: nodeName, k: e.target.value }));
 						}
 					}),
 					_react2.default.createElement(_Form2.default.Control, {
@@ -88,7 +91,7 @@ var Node = function Node(props) {
 						type: 'text',
 						placeholder: 'n',
 						onChange: function onChange(e) {
-							return dispatch((0, _treeSlice.setParameterN)(e.target.value));
+							return dispatch((0, _treeSlice.setParameterN)({ nodeName: nodeName, n: e.target.value }));
 						}
 					})
 				),
@@ -97,8 +100,11 @@ var Node = function Node(props) {
 					{ className: 'btn-confirm' },
 					_react2.default.createElement(
 						_Button2.default,
-						{ variant: 'outline-primary', size: 'sm', onClick: function onClick() {
-								return dispatch((0, _treeSlice.setChildren)());
+						{
+							variant: 'outline-primary',
+							size: 'sm',
+							onClick: function onClick() {
+								return dispatch((0, _treeSlice.setChildren)({ nodeName: nodeName }));
 							} },
 						'Confirm'
 					)
@@ -126,26 +132,59 @@ var _Node = require('./Node');
 
 var _Node2 = _interopRequireDefault(_Node);
 
-var _treeSlice = require('./treeSlice');
-
 var _store = require('./store');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Tree = function Tree(props) {
-	//const dispatch = useDispatch();
-	//store.dispatch(setNodeName("root"));
-	//const name = useSelector((state) => state.nodeName);
-	//console.log(name);
+	var node = props.node;
+	var stack = [];
+	stack.push(node);
+	while (stack.length) {
+		for (var j in stack[0]) {
+			if (stack[0][j].constructor === Object && !stack[0][j].length) {
+				stack.push(stack[0][j]);
+			} else if (Array.isArray(stack[0][j])) {
+				for (var i = 0; i < stack[0][j].length; i++) {
+					stack.push(stack[0][j][i]);
+				}
+			} else {
+				console.log(j + ' : ' + stack[0][j]);
+			}
+		}
+		stack.shift();
+	}
+	/*
+ 	<div className="tree-depth">
+ 		{node.map(item => <Node key={item.nodeName} node={item} />)}
+ 		<div className="tree-width">
+ 		{node.map(item => item.children.length != 0 ?
+ 			<Tree node={item.children} />
+ 			:null)}
+ 		</div>
+ 	</div>
+ */
 	return _react2.default.createElement(
 		'div',
-		{ className: 'tree' },
-		_react2.default.createElement(_Node2.default, { nodeName: 'root' })
+		null,
+		console.log(node.children),
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree-width' },
+			_react2.default.createElement(_Node2.default, { key: node.nodeName, node: node })
+		),
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree-depth' },
+			node.children.map(function (item) {
+				return _react2.default.createElement(Tree, { node: item });
+			})
+		)
 	);
 };
 
 exports.default = Tree;
-},{"./Node":2,"./store":5,"./treeSlice":6,"react":100,"react-redux":81}],4:[function(require,module,exports){
+},{"./Node":2,"./store":5,"react":100,"react-redux":81}],4:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -226,16 +265,91 @@ var treeSlice = exports.treeSlice = (0, _toolkit.createSlice)({
 			state.nodeName = action.payload;
 		},
 		setParameterK: function setParameterK(state, action) {
-			state.k = action.payload;
+			if (action.payload.nodeName === "root") {
+				state.k = action.payload.k;
+			} else {
+				var index = action.payload.nodeName.split("-");
+				index.shift();
+				var path = "";
+				for (var i = 0; i < index.length; i++) {
+					path += ".children[" + index[i] + "]";
+				}
+				path = "state" + path + ".k";
+				eval(path + "= action.payload.k;");
+			}
+			/*
+   let stack = [];
+   stack.push(state);
+   let flag = 0;
+   while(stack.length) {
+   	console.log("---");
+   	for (let j in stack[0]) {
+   		if (stack[0][j].constructor === Object
+   			&& !stack[0][j].length) {
+   			stack.push(stack[0][j]);
+   		}
+   		else if (Array.isArray(stack[0][j])) {
+   			for (let i = 0; i < stack[0][j].length; i++) {
+   				stack.push(stack[0][j][i]);
+   			}
+   		}
+   		else {
+   			if (stack[0][j] === action.payload.nodeName) {
+   				flag = 1;
+   			}
+   			if (flag === 1 && j === "k") {
+   				console.log(`!!!${j} : ${stack[0][j]}`);
+   			}
+   			else {
+   				console.log(`${j} : ${stack[0][j]}`);
+   			}
+   		}
+   	}
+   	flag = 0;
+   	stack.shift();
+   }
+   */
 		},
 		setParameterN: function setParameterN(state, action) {
-			state.n = action.payload;
+			var path = [];
+			if (action.payload.nodeName === "root") {
+				state.n = action.payload.n;
+			} else {
+				var index = action.payload.nodeName.split("-");
+				index.shift();
+				var _path = "";
+				for (var i = 0; i < index.length; i++) {
+					_path += ".children[" + index[i] + "]";
+				}
+				_path = "state" + _path + ".n";
+				eval(_path + "= action.payload.n;");
+			}
 		},
 		setChildren: function setChildren(state, action) {
-			if (state.nodeName === 'root') {
-				console.log('hello');
+			if (action.payload.nodeName === "root") {
+				state.children = [];
+				for (var i = 0; i < state.n; i++) {
+					state.children.push({
+						nodeName: 'children-' + i,
+						k: 0,
+						n: 0,
+						children: []
+					});
+				}
 			} else {
-				console.log('ya');
+				var index = action.payload.nodeName.split("-");
+				index.shift();
+				var path = "";
+				for (var _i = 0; _i < index.length; _i++) {
+					path += ".children[" + index[_i] + "]";
+				}
+				path = "state" + path;
+				var n = 0;
+				eval('n = ' + path + '.n;');
+				eval(path + ".children = [];");
+				for (var _i2 = 0; _i2 < n; _i2++) {
+					eval(path + ".children.push({nodeName: '" + action.payload.nodeName.toString() + "-" + _i2 + "', k: 0, n: 0, children: []});");
+				}
 			}
 		}
 	}

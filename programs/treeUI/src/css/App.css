@@ -6,10 +6,16 @@
 }
 
 ul {
-	list-style: none;
 }
 
-.node-width {
+.tree-width {
 	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.tree-depth {
+	display: flex;
+	flex-direction: row;
 	justify-content: center;
 }

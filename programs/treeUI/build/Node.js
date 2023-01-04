@@ -28,9 +28,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Node = function Node(props) {
 	var dispatch = (0, _reactRedux.useDispatch)();
-	//dispatch(setNodeName(props.nodeName));
-	//const nodeName = useSelector(state => state.nodeName);
-	//console.log(nodeName);
+	var nodeName = props.node.nodeName;
 	return _react2.default.createElement(
 		'div',
 		{ className: 'node' },
@@ -40,7 +38,7 @@ var Node = function Node(props) {
 			_react2.default.createElement(
 				_Card2.default.Header,
 				null,
-				'nodeName'
+				nodeName
 			),
 			_react2.default.createElement(
 				_Card2.default.Body,
@@ -53,7 +51,7 @@ var Node = function Node(props) {
 						type: 'text',
 						placeholder: 'k',
 						onChange: function onChange(e) {
-							return dispatch((0, _treeSlice.setParameterK)(e.target.value));
+							return dispatch((0, _treeSlice.setParameterK)({ nodeName: nodeName, k: e.target.value }));
 						}
 					}),
 					_react2.default.createElement(_Form2.default.Control, {
@@ -61,7 +59,7 @@ var Node = function Node(props) {
 						type: 'text',
 						placeholder: 'n',
 						onChange: function onChange(e) {
-							return dispatch((0, _treeSlice.setParameterN)(e.target.value));
+							return dispatch((0, _treeSlice.setParameterN)({ nodeName: nodeName, n: e.target.value }));
 						}
 					})
 				),
@@ -70,8 +68,11 @@ var Node = function Node(props) {
 					{ className: 'btn-confirm' },
 					_react2.default.createElement(
 						_Button2.default,
-						{ variant: 'outline-primary', size: 'sm', onClick: function onClick() {
-								return dispatch((0, _treeSlice.setChildren)());
+						{
+							variant: 'outline-primary',
+							size: 'sm',
+							onClick: function onClick() {
+								return dispatch((0, _treeSlice.setChildren)({ nodeName: nodeName }));
 							} },
 						'Confirm'
 					)
