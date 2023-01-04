@@ -9,6 +9,12 @@
 	flex-direction: row;
 	justify-content: center;
 }
+
+.stopwatch {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
 .node {
 	width: 10em;
 	margin: 5px;
@@ -21,4 +27,7 @@
 .btn-confirm {
 	display: flex;
 	justify-content: flex-end;
+}
+.displayTime {
+	text-align: center;
 }

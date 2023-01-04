@@ -14,6 +14,10 @@ var _Tree = require('./Tree');
 
 var _Tree2 = _interopRequireDefault(_Tree);
 
+var _StopWatch = require('./StopWatch');
+
+var _StopWatch2 = _interopRequireDefault(_StopWatch);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App(props) {
@@ -23,7 +27,16 @@ var App = function App(props) {
 	return _react2.default.createElement(
 		'div',
 		{ className: 'App' },
-		_react2.default.createElement(_Tree2.default, { node: tree, depth: 0 })
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree' },
+			_react2.default.createElement(_Tree2.default, { node: tree, depth: 0 })
+		),
+		_react2.default.createElement(
+			'div',
+			{ className: 'stopwatch' },
+			_react2.default.createElement(_StopWatch2.default, null)
+		)
 	);
 };
 
