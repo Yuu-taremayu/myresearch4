@@ -38,8 +38,12 @@ var Tree = function Tree(props) {
 	}
 	return _react2.default.createElement(
 		'div',
-		{ className: 'tree-width' },
-		_react2.default.createElement(_Node2.default, { key: node.nodeName, node: node }),
+		null,
+		_react2.default.createElement(
+			'div',
+			{ className: 'tree-width' },
+			_react2.default.createElement(_Node2.default, { key: node.nodeName, node: node })
+		),
 		_react2.default.createElement(
 			'div',
 			{ className: 'tree-depth' },

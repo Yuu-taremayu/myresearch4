@@ -8,10 +8,10 @@ babel --presets react,es2015 ${SRCDIR} -d ${DSTDIR}
 
 # Packaging JS
 echo "Packaging with browserify"
-browserify -g browserify-css ${DSTDIR}index.js -o bundle.js
+browserify -g browserify-css ${DSTDIR}index.js -o downloads/bundle.js
 
 #Packaging CSS
 echo "Packaging CSS"
-cat ${CSSDIR}* > bundle.css
+cat ${CSSDIR}* > downloads/bundle.css
 
 date; echo;
