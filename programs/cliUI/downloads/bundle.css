@@ -1,3 +1,20 @@
-p {
-	color: red;
+.stopwatch {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+.displayTime {
+	text-align: center;
+}
+
+.stopwatch {
+	background-color: white;
+	border-radius: 5px;
+}
+#terminal {
+	display: block;
+	border: none;
+	resize: none;
+	background-color: black;
+	color: white;
 }
