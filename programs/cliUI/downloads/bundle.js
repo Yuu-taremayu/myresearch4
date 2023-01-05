@@ -212,7 +212,7 @@ var Terminal = function Terminal() {
 		width: innerWidth,
 		height: innerHeight
 	};
-	var help = "type 'split', then choose file, and input split number\nAvailable commands -> help, ls, split";
+	var help = "type 'split', then choose file, and input split number\nAvailable commands -> help, ls, split, reset";
 
 	var displayString = function displayString(key) {
 		if (key.length === 1) {

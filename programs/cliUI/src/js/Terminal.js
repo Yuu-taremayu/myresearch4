@@ -12,7 +12,7 @@ const Terminal = () => {
 		width: innerWidth,
 		height: innerHeight
 	};
-	const help = "type 'split', then choose file, and input split number\nAvailable commands -> help, ls, split";
+	const help = "type 'split', then choose file, and input split number\nAvailable commands -> help, ls, split, reset";
 
 	const displayString = (key) => {
 		if (key.length === 1) {
