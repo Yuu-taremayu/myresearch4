@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "cliui",
-=======
   "name": "cliUI",
->>>>>>> 7dd55729ef677eaf25a3d6bf69f490dc3e719185
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -27,10 +23,7 @@
     "npm-install-missing": "^0.1.4",
     "react-bootstrap": "^2.6.0",
     "react-redux": "^8.0.5",
-<<<<<<< HEAD
     "react-terminal-ui": "^1.0.0",
-=======
->>>>>>> 7dd55729ef677eaf25a3d6bf69f490dc3e719185
     "redux": "^4.2.0"
   }
 }
