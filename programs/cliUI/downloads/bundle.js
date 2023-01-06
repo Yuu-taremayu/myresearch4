@@ -294,7 +294,7 @@ var Terminal = function Terminal() {
 		_react2.default.createElement("textarea", {
 			id: "terminal",
 			rows: "5",
-			cols: "40",
+			cols: "100",
 			spellCheck: "false",
 			style: styles,
 			value: com,
