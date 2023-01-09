@@ -1,10 +1,12 @@
-const FIELDSIZE = 256;
-const BITMASK = 0xff;
+const consts = require('./defconst');
+
+const FIELDSIZE = consts.FIELDSIZE;
+const BITMASK = consts.BITMASK;
 
 /*
  * set index and GFVector of elements on GF
  */
-exports.setGFInfo = function(GFVector) {
+const setGFInfo = function(GFVector) {
 	const genePoly = [1, 0, 1, 1, 1, 0, 0, 0, 1];
 	var mem = [0, 0, 0, 0, 0, 0, 0, 0]
 	var input = 0;
@@ -59,7 +61,7 @@ exports.setGFInfo = function(GFVector) {
  * lagrange interpolation on GF(extension field)
  * each operation what used here is shown at "field???" functions
  */
-function lagrange(dataNum, dataX, dataY, GFVector) {
+const lagrange = function(dataNum, dataX, dataY, GFVector) {
 	var x = 0;
 	var l1 = 0;
 	var l2 = 0;
@@ -68,7 +70,7 @@ function lagrange(dataNum, dataX, dataY, GFVector) {
 
 	for (let i = 0; i < dataNum; i++) {
 		l1 = basePoly(dataNum, i, x, dataX, GFVector);
-		l2 = basePoly(dataNum, i, x, dataX, GFVector);
+		l2 = basePoly(dataNum, i, dataX[i], dataX, GFVector);
 		l = fieldDiv(l1, l2, GFVector);
 		L = fieldAdd(L, fieldMul(dataY[i], l, GFVector));
 	}
@@ -80,9 +82,9 @@ function lagrange(dataNum, dataX, dataY, GFVector) {
  * calculation base polynomial for lagrange interpolation
  * each operation what used here is shown at "field???" functions
  */
-function basePoly(dataNum, i, x, dataX, GFVector) {
-	var sub = 0;
-	var l = 1;
+const basePoly = function(dataNum, i, x, dataX, GFVector) {
+	let sub = 0;
+	let l = 1;
 
 	for (let j = 0; j < dataNum; j++) {
 		if (j != i) {
@@ -99,7 +101,7 @@ function basePoly(dataNum, i, x, dataX, GFVector) {
  * addtion on GF(extension field)
  * xor and bit mask
  */
-exports.fieldAdd = function(x, y) {
+const fieldAdd = function(x, y) {
 	return (x ^ y) & BITMASK;
 };
 
@@ -107,7 +109,7 @@ exports.fieldAdd = function(x, y) {
  * subtraction on GF(extension field)
  * the same as add
  */
-exports.fieldSub = function(x, y) {
+const fieldSub = function(x, y) {
 	return (x ^ y) & BITMASK;
 };
 
@@ -115,7 +117,7 @@ exports.fieldSub = function(x, y) {
  * multiplication on GF(extension field)
  * convert vector to exponentiation, calc mod and reconvert
  */
-exports.fieldMul = function(x, y, GFVector) {
+const fieldMul = function(x, y, GFVector) {
 	var indX = 0;
 	var indY = 0;
 	var indAns = 0;
@@ -132,14 +134,16 @@ exports.fieldMul = function(x, y, GFVector) {
 			indY = i - 1;
 		}
 	}
-	indAns = (inX + indY) % (FIELDSIZE - 1);
+	indAns = (indX + indY) % (FIELDSIZE - 1);
+
+	return GFVector[indAns + 1];
 };
 
  /*
   * division on GF(extension field)
   * convert vector to exponentiation, calc mod and reconvert
   */
-exports.fieldDiv = function(x, y, GFVector) {
+const fieldDiv = function(x, y, GFVector) {
 	var indX = 0;
 	var indY = 0;
 	var indAns = 0;
@@ -163,3 +167,11 @@ exports.fieldDiv = function(x, y, GFVector) {
 
 	return GFVector[indAns + 1];
 };
+
+exports.setGFInfo = setGFInfo;
+exports.lagrange = lagrange;
+exports.basePoly = basePoly;
+exports.fieldAdd = fieldAdd;
+exports.fieldSub = fieldSub;
+exports.fieldMul = fieldMul;
+exports.fieldDiv = fieldDiv;
