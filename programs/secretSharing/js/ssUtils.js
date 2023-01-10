@@ -3,8 +3,7 @@ const consts = require('./defconst');
 
 const FIELDSIZE = consts.FIELDSIZE;
 
-const split = function(ssParam, GFVector) {
-	const secret = 124;
+const split = function(secret, ssParam, GFVector) {
 	const serverId = [...Array(ssParam.n)].map((_, i) => i + 1);
 	const poly = generatePoly(secret, ssParam.k);
 
