@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022/Arch Linux) (preloaded format=uplatex 2022.12.16)  23 DEC 2022 12:35
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022/Arch Linux) (preloaded format=uplatex 2022.12.16)  10 JAN 2023 14:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -714,53 +714,40 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-Underfull \hbox (badness 1303) in paragraph at lines 123--125
-[]\JY2/hmc/m/n/11 管理に参加する人や端末の数 $\OML/ntxmi/m/it/10.9
-5 i$ \JY2/hmc/m/n/11 に対し ，
+Underfull \hbox (badness 2443) in paragraph at lines 121--125
+\JY2/hmc/m/n/11 管理に参加する人や端末の数 $\OML/ntxmi/m/it/10.95 
+i$ \JY2/hmc/m/n/11 に対し ，
  []
 
-
-LaTeX Font Warning: Font shape `JY2/hmc/b/n' undefined
-(Font)              using `JY2/hmc/bx/n' instead on input line 149.
-
-LaTeX Font Info:    Font shape `JT2/hmc/bx/n' will be
-(Font)              scaled to size 7.39746pt on input line 149.
-LaTeX Font Info:    Font shape `JY2/hmc/bx/n' will be
-(Font)              scaled to size 7.39746pt on input line 149.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 149.
-
-LaTeX Warning: Citation `nozaki-1' on page 2 undefined on input line 149.
-
-LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 10.57837pt on input line 230.
-LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 10.57837pt on input line 230.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 11.44pt on input line 230.
+File: treeUI.png Graphic file (type bmp)
+<treeUI.png>
+File: cliUI.png Graphic file (type bmp)
+<cliUI.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
+LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
+(Font)              scaled to size 10.57837pt on input line 229.
+LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
+(Font)              scaled to size 10.57837pt on input line 229.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 11.44pt on input line 229.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 5.73302pt on input line 301.
+(Font)              scaled to size 5.73302pt on input line 300.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 5.08575pt on input line 301.
+(Font)              scaled to size 5.08575pt on input line 300.
 
 [3
 
-] (./sdj21b14.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+] (./sdj21b14.aux) ) 
 Here is how much of TeX's memory you used:
- 11889 strings out of 478689
- 179063 string characters out of 5861063
- 460572 words of memory out of 5000000
- 30207 multiletter control sequences out of 15000+600000
- 537800 words of font info for 150 fonts, out of 8000000 for 9000
+ 11900 strings out of 478689
+ 179224 string characters out of 5861063
+ 458580 words of memory out of 5000000
+ 30212 multiletter control sequences out of 15000+600000
+ 534684 words of font info for 147 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 84i,11n,131p,406b,1019s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,15n,131p,406b,1019s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on sdj21b14.dvi (3 pages, 19444 bytes).
+Output written on sdj21b14.dvi (3 pages, 19104 bytes).
