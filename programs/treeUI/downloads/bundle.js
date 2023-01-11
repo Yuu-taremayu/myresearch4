@@ -30,6 +30,13 @@ var App = function App(props) {
 		{ className: 'App' },
 		_react2.default.createElement(
 			'div',
+			{ className: 'file' },
+			_react2.default.createElement('input', { type: 'file', onChange: function onChange(e) {
+					return console.log(e.target.files);
+				} })
+		),
+		_react2.default.createElement(
+			'div',
 			{ className: 'tree' },
 			_react2.default.createElement(_Tree2.default, { node: tree, depth: 0 })
 		),
@@ -386,7 +393,7 @@ var store = exports.store = (0, _toolkit.configureStore)({
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.setChildren = exports.setParameterN = exports.setParameterK = exports.setNodeName = exports.treeSlice = exports.initialState = undefined;
+exports.setChildren = exports.setParameterN = exports.setParameterK = exports.treeSlice = exports.initialState = undefined;
 
 var _toolkit = require('@reduxjs/toolkit');
 
@@ -401,9 +408,6 @@ var treeSlice = exports.treeSlice = (0, _toolkit.createSlice)({
 	name: 'tree',
 	initialState: initialState,
 	reducers: {
-		setNodeName: function setNodeName(state, action) {
-			state.nodeName = action.payload;
-		},
 		setParameterK: function setParameterK(state, action) {
 			if (action.payload.nodeName === "root") {
 				state.k = action.payload.k;
@@ -417,38 +421,6 @@ var treeSlice = exports.treeSlice = (0, _toolkit.createSlice)({
 				path = "state" + path + ".k";
 				eval(path + "= action.payload.k;");
 			}
-			/*
-   let stack = [];
-   stack.push(state);
-   let flag = 0;
-   while(stack.length) {
-   	console.log("---");
-   	for (let j in stack[0]) {
-   		if (stack[0][j].constructor === Object
-   			&& !stack[0][j].length) {
-   			stack.push(stack[0][j]);
-   		}
-   		else if (Array.isArray(stack[0][j])) {
-   			for (let i = 0; i < stack[0][j].length; i++) {
-   				stack.push(stack[0][j][i]);
-   			}
-   		}
-   		else {
-   			if (stack[0][j] === action.payload.nodeName) {
-   				flag = 1;
-   			}
-   			if (flag === 1 && j === "k") {
-   				console.log(`!!!${j} : ${stack[0][j]}`);
-   			}
-   			else {
-   				console.log(`${j} : ${stack[0][j]}`);
-   			}
-   		}
-   	}
-   	flag = 0;
-   	stack.shift();
-   }
-   */
 		},
 		setParameterN: function setParameterN(state, action) {
 			var path = [];
@@ -496,11 +468,9 @@ var treeSlice = exports.treeSlice = (0, _toolkit.createSlice)({
 });
 
 var _treeSlice$actions = treeSlice.actions;
-var setNodeName = _treeSlice$actions.setNodeName,
-    setParameterK = _treeSlice$actions.setParameterK,
+var setParameterK = _treeSlice$actions.setParameterK,
     setParameterN = _treeSlice$actions.setParameterN,
     setChildren = _treeSlice$actions.setChildren;
-exports.setNodeName = setNodeName;
 exports.setParameterK = setParameterK;
 exports.setParameterN = setParameterN;
 exports.setChildren = setChildren;

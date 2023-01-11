@@ -12,8 +12,8 @@
 
 .stopwatch {
 	position: fixed;
-	top: 10px;
-	right: 10px;
+	top: 20px;
+	right: 20px;
 }
 .node {
 	width: 10em;
