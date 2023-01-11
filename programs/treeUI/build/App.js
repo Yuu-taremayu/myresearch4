@@ -29,6 +29,13 @@ var App = function App(props) {
 		{ className: 'App' },
 		_react2.default.createElement(
 			'div',
+			{ className: 'file' },
+			_react2.default.createElement('input', { type: 'file', onChange: function onChange(e) {
+					return console.log(e.target.files);
+				} })
+		),
+		_react2.default.createElement(
+			'div',
 			{ className: 'tree' },
 			_react2.default.createElement(_Tree2.default, { node: tree, depth: 0 })
 		),
