@@ -11,9 +11,6 @@ export const treeSlice = createSlice({
 	name: 'tree',
 	initialState,
 	reducers: {
-		setNodeName: (state, action) => {
-			state.nodeName = action.payload;
-		},
 		setParameterK: (state, action) => {
 			if (action.payload.nodeName === "root") {
 				state.k = action.payload.k;
@@ -28,38 +25,6 @@ export const treeSlice = createSlice({
 				path = "state" + path + ".k";
 				eval(path + "= action.payload.k;");
 			}
-			/*
-			let stack = [];
-			stack.push(state);
-			let flag = 0;
-			while(stack.length) {
-				console.log("---");
-				for (let j in stack[0]) {
-					if (stack[0][j].constructor === Object
-						&& !stack[0][j].length) {
-						stack.push(stack[0][j]);
-					}
-					else if (Array.isArray(stack[0][j])) {
-						for (let i = 0; i < stack[0][j].length; i++) {
-							stack.push(stack[0][j][i]);
-						}
-					}
-					else {
-						if (stack[0][j] === action.payload.nodeName) {
-							flag = 1;
-						}
-						if (flag === 1 && j === "k") {
-							console.log(`!!!${j} : ${stack[0][j]}`);
-						}
-						else {
-							console.log(`${j} : ${stack[0][j]}`);
-						}
-					}
-				}
-				flag = 0;
-				stack.shift();
-			}
-			*/
 		},
 		setParameterN: (state, action) => {
 			let path = [];
@@ -108,5 +73,5 @@ export const treeSlice = createSlice({
 	},
 });
 
-export const { setNodeName, setParameterK, setParameterN, setChildren } = treeSlice.actions;
+export const {setParameterK, setParameterN, setChildren } = treeSlice.actions;
 export default treeSlice.reducer;
