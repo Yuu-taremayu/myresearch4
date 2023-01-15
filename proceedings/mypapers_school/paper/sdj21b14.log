@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022/Arch Linux) (preloaded format=uplatex 2022.12.16)  15 JAN 2023 18:37
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022/Arch Linux) (preloaded format=uplatex 2022.12.16)  13 JAN 2023 14:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -604,14 +604,14 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 * \headsep=15.69727pt
 * \topskip=12.76065pt
 * \footskip=28.45792pt
-* \marginparwidth=18.49365pt
+* \marginparwidth=27.74048pt
 * \marginparsep=18.49365pt
 * \columnsep=22.76219pt
 * \skip\footins=16.0pt plus 5.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
-* \@twocolumnfalse
+* \@twocolumntrue
 * \@twosidefalse
 * \@mparswitchfalse
 * \@reversemarginfalse
@@ -700,43 +700,60 @@ LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
 (Font)              scaled to size 7.39746pt on input line 71.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 8.0pt on input line 71.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [1
 
 
 ]
-Underfull \hbox (badness 2443) in paragraph at lines 126--130
+Underfull \hbox (badness 2443) in paragraph at lines 121--125
 \JY2/hmc/m/n/11 管理に参加する人や端末の数 $\OML/ntxmi/m/it/10.95 
 i$ \JY2/hmc/m/n/11 に対し ，
  []
 
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 10.17151pt on input line 185.
+(Font)              scaled to size 10.17151pt on input line 180.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 10.17151pt on input line 185.
+(Font)              scaled to size 10.17151pt on input line 180.
 File: treeUI.png Graphic file (type bmp)
 <treeUI.png>
-[2]
 File: cliUI.png Graphic file (type bmp)
 <cliUI.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [3]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 10.57837pt on input line 377.
+(Font)              scaled to size 10.57837pt on input line 363.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 10.57837pt on input line 377.
+(Font)              scaled to size 10.57837pt on input line 363.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 11.44pt on input line 377.
+(Font)              scaled to size 11.44pt on input line 363.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 5.73302pt on input line 433.
+(Font)              scaled to size 5.73302pt on input line 419.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 5.08575pt on input line 433.
- [4] (./sdj21b14.aux) ) 
+(Font)              scaled to size 5.08575pt on input line 419.
+ [4]
+(./sdj21b14.aux) ) 
 Here is how much of TeX's memory you used:
  11896 strings out of 478689
  179173 string characters out of 5861063
- 457534 words of memory out of 5000000
+ 457564 words of memory out of 5000000
  30208 multiletter control sequences out of 15000+600000
  534684 words of font info for 147 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  84i,15n,131p,406b,1019s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on sdj21b14.dvi (4 pages, 33760 bytes).
+Output written on sdj21b14.dvi (4 pages, 32544 bytes).
